@@ -88,17 +88,26 @@ class TestBBox(object):
         self.bbox.aspect = 1
         assert_allclose(self.bbox.height, 2.)
         
-class TestMoveAnchor(object):
+class TestMoveAnchorUnrotated(object):
     
     def setup_method(self, method):
         self.bb = BBox(center=(1.0, 2.0), width=2, height=4, theta=0)
         
-    def test_resize_upper_left(self):
+    @pytest.mark.parametrize('id', range(1))
+    def test_resize_upper_left(self, id):
+        #lower left at origin, upper right at (3,4)
+        
         bb = self.bb
-        bb.move_anchor(-1, 1, 0)
-        assert bbox.left == -1
-        assert bbox.width == 2
-        assert bbox.height == 4
-        assert bbox.bottom = 0
+        bb.move_anchor(-1, 1, id)
+        
+        answers = {0: (-1, 0, 3, 1),
+                   }
+
+        l, b, w, h = answers[id]
+        
+        assert bbox.left == l
+        assert bbox.bottom = b
+        assert bbox.width == w
+        assert bbox.height == h
         
     

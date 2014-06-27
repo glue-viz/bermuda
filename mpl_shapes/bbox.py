@@ -136,6 +136,18 @@ class BBox(object):
         
         fix = {'theta': False, 'center': False, 'aspect': False}
         
+        
+        # For now, hard-code different modes, then look for common patterns
+        
+        if mode == 'rotate':
+            # We find the angle from dx, dy. For theta=0, vertex=0 is at PA of 135
+            # degrees (top left)
+            self.theta = np.degrees(np.arctan2(dy, dx)) - 135 + 45 * float(id)
+
+            
+        
+        # TREAT ROTATE SEPARATELY? (since orthogonal to all other cases)
+        
         if mode == 'rotate':
             fix['center'] = True
             fix['aspect'] = self.aspect
@@ -183,6 +195,7 @@ class BBox(object):
         else:
             # Here determine width and height from dx, dy, but need to take into account rotation. Should be             
 
+        # MAGIC HERE
         
 
         
