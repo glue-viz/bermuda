@@ -1,0 +1,50 @@
+language: python
+
+python:
+    - 2.6
+    - 2.7
+    - 3.3
+    - 3.4
+env:
+    global:
+        - NUMPY_VERSION=1.8
+        - CONDA_INSTALL='conda install --yes'
+        - PIP_INSTALL='pip install'
+        - SETUP_CMD='py.test --cov mpl_shapes'
+
+matrix:
+    include:
+        # Try older numpy versions
+        - python: 2.7
+          env: NUMPY_VERSION=1.7
+        - python: 2.7
+          env: NUMPY_VERSION=1.6
+        - python: 2.7
+          env: NUMPY_VERSION=1.5
+
+before_install:
+
+    # SET UP CONDA
+    - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+    - chmod +x miniconda.sh
+    - ./miniconda.sh -b
+    - export PATH=/home/travis/miniconda/bin:$PATH
+    - conda update --yes conda
+
+install:
+
+    # CONDA
+    - conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
+    - source activate test
+
+    # CORE DEPENDENCIES
+    - $CONDA_INSTALL numpy=$NUMPY_VERSION matplotlib pytest pip
+
+    # COVERAGE DEPENDENCIES
+    - $PIP_INSTALL pytest-cov coverage coveralls
+
+script:
+   - $SETUP_CMD
+
+after_success:
+    - coveralls
