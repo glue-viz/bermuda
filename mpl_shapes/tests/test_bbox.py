@@ -106,7 +106,7 @@ class TestMoveAnchorUnrotated(object):
         l, b, w, h = answers[id]
         
         assert bbox.left == l
-        assert bbox.bottom = b
+        assert bbox.bottom == b
         assert bbox.width == w
         assert bbox.height == h
         

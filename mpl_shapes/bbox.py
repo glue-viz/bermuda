@@ -169,8 +169,8 @@ class BBox(object):
             fix['aspect'] = 1.
         else:
             raise ValueError("Unknown mode: {0} (should be one of 'resize', "
-                             'resize-center', 'resize-aspect', 'resize-center-aspect', "
-                             'resize-square-', or 'resize-center-aspect'".format(mode))
+                             "'resize-center', 'resize-aspect', 'resize-center-aspect', "
+                             "'resize-square-', or 'resize-center-aspect'".format(mode))
                              
         # Find id of opposite anchor
         opposite_id = (id + 4) % 8
@@ -191,8 +191,9 @@ class BBox(object):
             return
         
         if fix['aspect'] is not False:
-            # TODO
+            pass  # TODO
         else:
+            pass
             # Here determine width and height from dx, dy, but need to take into account rotation. Should be             
 
         # MAGIC HERE
