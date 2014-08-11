@@ -82,8 +82,8 @@ class BBox(object):
     @property
     def transform(self, ax=None):
         """
-        Return a matplotlib transform to transform into the frame of reference
-        of the bounding box.
+        Return a matplotlib transform to transform from the frame of reference
+        of the bounding box to the display coordinates.
         """
         return self._transform
                         
