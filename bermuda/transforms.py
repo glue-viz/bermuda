@@ -56,7 +56,7 @@ class BBoxTransform(Transform):
 
     def tie_to_axes(self, ax):
         self._ax = ax
-        self._frozen_ax_transform = Affine2D(self._ax.transData.get_matrix())
+        self._frozen_ax_transform = self._ax.transData.frozen()
 
     def transform(self, coords):
         """
