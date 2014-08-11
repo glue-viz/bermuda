@@ -3,7 +3,7 @@ from setuptools import setup
 VERSION = '0.1.dev'
 
 DESCRIPTION = "Interactive shapes in Python"
-NAME = "mpl_shapes"
+NAME = "bermuda"
 AUTHOR = "Chris Beaumont and Thomas Robitaille"
 AUTHOR_EMAIL = "cbeaumont@cfa.harvard.edu and thomas.robitaille@gmail.com"
 MAINTAINER = AUTHOR
@@ -20,8 +20,8 @@ setup(name=NAME,
       maintainer_email=MAINTAINER_EMAIL,
       url=URL,
       license=LICENSE,
-      packages=['mpl_shapes', 'mpl_shapes.tests'],
-      provides=['mpl_shapes'],
+      packages=['bermuda', 'bermuda.tests'],
+      provides=['bermuda'],
       classifiers=[
           'Development Status :: 1 - Planning',
           'License :: OSI Approved :: BSD License',
